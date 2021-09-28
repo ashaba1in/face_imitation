@@ -4,7 +4,7 @@ import cv2
 
 class FaceAligner:
     def __init__(self, desiredLeftEye=(0.45, 0.45),
-        desiredFaceWidth=300, desiredFaceHeight=225):
+                 desiredFaceWidth=300, desiredFaceHeight=225):
         # store the facial landmark predictor, desired output left
         # eye position, and desired output face width + height
         self.desiredLeftEye = desiredLeftEye
@@ -51,10 +51,4 @@ class FaceAligner:
         M[0, 2] += (tX - eyesCenter[0])
         M[1, 2] += (tY - eyesCenter[1])
 
-        # apply the affine transformation
-        # (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
-        # print(M)
-        # output = cv2.warpAffine(image, M, (w, h),
-        #                         flags=cv2.INTER_CUBIC)
-        # return the aligned face
         return M
